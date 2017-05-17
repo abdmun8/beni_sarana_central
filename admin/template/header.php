@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PT Sarana Sentral Bajatama, Tbk.</title>
-  <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
-  <script src="asset/js/jquery.min.js"></script>
-  <script src="asset/js/bootstrap.min.js" ></script>
+  <title>PT SSB</title>
+  <!-- Load CSS dan javascript dari folder asset/css -->
+  <link rel="stylesheet" type="text/css" href="../../asset/css/bootstrap.min.css">
+  <script src="../../asset/js/jquery.min.js"></script>
+  <script src="../../asset/js/bootstrap.min.js" ></script>
   
 
 </head>
@@ -19,7 +20,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img alt="Brand" src="asset/img/saranacentral.png" height="25" width="90"></a>
+      <a class="navbar-brand" href="../index.php"><img alt="PT SSB" src="../asset/img/saranacentral.png" height="25" width="90"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,7 +43,7 @@
       </ul>     
       <ul class="nav navbar-nav navbar-right">
         <li>       
-          <button type="button" class="btn btn-default navbar-btn" >Sign in</button>
+          <a href="login.php">Login</a>
         </li>        
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

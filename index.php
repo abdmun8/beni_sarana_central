@@ -1,26 +1,27 @@
 <?php
-require_once 'header.php';
+require_once 'template/header.php';
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PT Sarana Sentral Bajatama, Tbk.</title>
-  <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
-  <script src="asset/js/jquery.min.js"></script>
-  <script src="asset/js/bootstrap.min.js" ></script>
+	<title>PT SSB - Home</title>
+	<!-- Load CSS dan javascript dari folder asset/css -->
+  	<link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+  	<script src="asset/js/jquery.min.js"></script>
+    <script src="asset/js/bootstrap.min.js" ></script>
 </head>
 <body>
 <div class="container">
-	<div style="padding-top: 30px;">
+	<div style="padding-top: 50px;">
 	<h1 style="text-align: center;">Selamat Datang</h1>
 	<p align="center">Disini anda dapat melihat jadwal, laporan dan stock material</p>
-	<div class="col-md-4">
+	<div class="col-md-4 col-sm-6 col-xs-12">
 		jadwal
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-4 col-sm-6 col-xs-12">
 		Laporan
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-4 col-sm-6 col-xs-12">
 		Stock
 	</div>
 </div>
@@ -28,5 +29,5 @@ require_once 'header.php';
 </body>
 </html>
 <?php 
-require_once 'footer.php';
+require_once 'template/footer.php';
  ?>

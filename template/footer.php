@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>PT SSB</title>
   <style type="text/css">
   	ul li a{
   		text-decoration: none;
@@ -15,6 +15,7 @@
   		list-style:  none;
   	}
   </style>
+  <!-- Load CSS dan javascript dari folder asset/css -->
   <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
   <script src="asset/js/jquery.min.js"></script>
   <script src="asset/js/bootstrap.min.js" ></script>
