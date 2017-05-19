@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PT SSB - Login</title>
+	<title>PT SCB - Login</title>
 	<!-- Load CSS dan javascript dari folder asset/css -->
 	<link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.min.css">
 	<script src="../asset/js/jquery.min.js"></script>

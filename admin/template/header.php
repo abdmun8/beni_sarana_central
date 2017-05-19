@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PT SSB</title>
+  <title>PT SCB</title>
   <!-- Load CSS dan javascript dari folder asset/css -->
   <link rel="stylesheet" type="text/css" href="../../asset/css/bootstrap.min.css">
   <script src="../../asset/js/jquery.min.js"></script>
-  <script src="../../asset/js/bootstrap.min.js" ></script>
-  
+  <script src="../../asset/js/bootstrap.min.js" ></script>  
 
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -20,26 +19,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.php"><img alt="PT SSB" src="../asset/img/saranacentral.png" height="25" width="90"></a>
+      <a class="navbar-brand" href="../index.php"><img alt="PT SCB" src="../asset/img/saranacentral2.png" height="25" width="90"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+      <ul class="nav navbar-nav">        
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Schedule<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="estimasi_cgl.php">Estimasi Produksi CGL</a></li>
+            <li><a href="estimasi_csl.php">Estimasi Produksi CSL</a></li> 
+            <li><a href="estimasi_ccl.php">Estimasi Produksi CCL</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stock<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="stock_coil.php">Stock Coil</a></li>
+            <li><a href="stock_bahan.php">Stock Bahan Baku</a></li> 
+          </ul>
+        </li>
+        <li><a href="laporan.php">Laporan</a></li>        
       </ul>     
       <ul class="nav navbar-nav navbar-right">
         <li>       

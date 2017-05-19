@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PT SSB</title>
+  <title>PT SCB</title>
   <style type="text/css">
   	ul li a{
   		text-decoration: none;
-  		color: white;
-  		a:hover: white;
+  		color: white;  		
   	}
   	ul li a:hover{
-  		color: white;
+  		color: #01C388;
   	}
   	ul li{
   		list-style:  none;
@@ -21,17 +20,9 @@
   <script src="asset/js/bootstrap.min.js" ></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-  <div class="container" style="padding-top: 20px;">
-    <div class="col-md-3">
-		<ul>
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact & support</a></li>
-			<li><a href="#">Enterprise</a></li>
-			</ul>
-	</div>
-
-	<div class="col-md-12"><p style="color: #ffffff; text-align: center; padding-top: 10px;">&copy PT Sarana Sentral bajatama Tbk. <?php echo date('Y');?></p></div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container" style="padding-top: 10px;">    
+	<div class="col-md-12"><p style="color: #000000; text-align: center; font-weight: bold;">&copy PT Sarana Central bajatama Tbk. <?php echo date('Y');?></p></div>
   </div>
 </nav>
 </body>
