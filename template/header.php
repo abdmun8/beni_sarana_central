@@ -42,8 +42,15 @@
         <li><a href="laporan.php">Laporan</a></li>        
       </ul>     
       <ul class="nav navbar-nav navbar-right">
-        <li>       
-          <a href="admin/login.php">Login</a>
+        <li>
+        <?php
+        session_start();
+        if (isset($_SESSION['username'])) {
+          echo "<a href='admin/index.php'>admin</a>";
+        }else{
+          echo "<a href='admin/login.php'>Login</a>";
+        }
+        ?>   
         </li>
       </ul>        
     </div><!-- /.navbar-collapse -->

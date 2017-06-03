@@ -2,10 +2,10 @@
 session_start(); // Memulai Session
 require_once '../fungsi.php';
 global $con;
-$error=''; // Variabel untuk menyimpan pesan error
 if (isset($_POST['login'])) {
   if (empty($_POST['username']) || empty($_POST['pass'])){
-      $error = "Username or Password is invalid";
+      echo "<script>alert('Silahkan isi kolom username dan password'),('_self')</script>";
+      echo "<script>window.open('login.php'),('_self')</script>";
   }
   else
   {
@@ -20,7 +20,8 @@ if (isset($_POST['login'])) {
         $_SESSION['username']=$username; // Membuat Sesi/session
         header("location: index.php"); // Mengarahkan ke halaman profil
         } else {
-        $error = "Username atau Password belum terdaftar";
+        echo "<script>alert('Username atau Password Salah'),('_self')</script>";
+        echo "<script>window.open('login.php'),('_self')</script>";
         }
   }
 }

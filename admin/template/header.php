@@ -3,10 +3,11 @@
 <head>
   <title>PT SCB</title>
   <!-- Load CSS dan javascript dari folder asset/css -->
-  <link rel="stylesheet" type="text/css" href="../../asset/css/bootstrap.min.css">
-  <script src="../../asset/js/jquery.min.js"></script>
-  <script src="../../asset/js/bootstrap.min.js" ></script>  
-
+  <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap-datepicker.css">
+  <script src="../asset/js/jquery.min.js"></script>
+  <script src="../asset/js/bootstrap.min.js" ></script>
+  
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -21,34 +22,52 @@
       </button>
       <a class="navbar-brand" href="../index.php"><img alt="PT SCB" src="../asset/img/saranacentral2.png" height="25" width="90"></a>
     </div>
-
+      <ul class="nav navbar-nav">
+      <?php
+      if (isset($_SESSION['username'])) {
+        echo "
+        <li><a href='index.php'>Home</a></li>
+        <li><a href='sumber.php'>Sumber</a></li>
+        <li><a href='order.php'>Order</a></li>
+        <li><a href='spec.php'>Spec</a></li>
+        <li><a href='finished.php'>Finished</a></li>
+        <li><a href='coat.php'>Coat</a></li>
+        <li class='dropdown'>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Schedule<span class='caret'></span></a>
+          <ul class='dropdown-menu'>
+            <li><a href='estimasi_cgl.php'>Estimasi Produksi CGL</a></li>            
+            
+          </ul>
+        </li>
+        <li class='dropdown'>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Stock<span class='caret'></span></a>
+          <ul class='dropdown-menu'>
+            <li><a href='stock_coil.php'>Stock Coil</a></li>
+            <li><a href='stock_bahan_baku.php'>Stock Bahan Baku</a></li> 
+          </ul>
+        </li>
+        <li><a href='laporan.php'>Laporan</a></li> 
+        ";
+        }
+        ?>
+      </ul>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">        
-      <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Schedule<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="estimasi_cgl.php">Estimasi Produksi CGL</a></li>
-            <li><a href="estimasi_csl.php">Estimasi Produksi CSL</a></li> 
-            <li><a href="estimasi_ccl.php">Estimasi Produksi CCL</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stock<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="stock_coil.php">Stock Coil</a></li>
-            <li><a href="stock_bahan.php">Stock Bahan Baku</a></li> 
-          </ul>
-        </li>
-        <li><a href="laporan.php">Laporan</a></li>        
-      </ul>     
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">         
       <ul class="nav navbar-nav navbar-right">
-        <li>       
-          <a href="login.php">Login</a>
+        <li>    
+          <?php
+          if (isset($_SESSION['username'])) {
+            echo "<a href='logout.php'>Logout</a>";
+          }
+          ?>
         </li>        
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
+<!--
+dropdown estimasi
+<li><a href='estimasi_csl.php'>Estimasi Produksi CSL</a></li> 
+<li><a href='estimasi_ccl.php'>Estimasi Produksi CCL</a></li>
+-->
 </body>
 </html>
