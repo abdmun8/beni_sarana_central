@@ -35,7 +35,7 @@
 <div class="container">
 
 <div class="col-md-12">
-	<h1 style="padding-top: 30px; text-align: center;">Estimasi CGL</h1>
+	<h1 style="padding-top: 30px; text-align: center;">ESTIMASI PRODUKSI CGL</h1>
 	<a href="tambah_estimasi_cgl.php"><button class="btn btn-default">Tambah</button></a>
 	<hr>
 <?php

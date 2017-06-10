@@ -17,4 +17,10 @@ $con = mysqli_connect("localhost","root","","saranacentral");
 ?>
 
 
+w
 
+     1
+     2
+
+   r
+          

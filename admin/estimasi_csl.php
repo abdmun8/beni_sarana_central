@@ -67,7 +67,7 @@
 				</tr>
 			";
 		$no=0;
-		$query     = ("SELECT estimasicsl.tebal, estimasicsl.lebar, estimasicsl.berat, estimasicsl.panjang, sumber.namasumber, estimasicsl.mpm, estimasicsl.menit, estimasicsl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicsl.berattarget, finished.namafinished, estimasicsl.keterangan FROM estimasicsl INNER JOIN sumber ON estimasicsl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicsl.idspec=spec.idspec INNER JOIN coat ON estimasicsl.idcoat=coat.idcoat INNER JOIN orders ON estimasicsl.idorder=orders.idorder INNER JOIN finished ON estimasicsl.idfinished=finished.idfinished WHERE estimasicsl.selesai=0");
+		$query     = ("SELECT estimasicsl.tebal, estimasicsl.lebar, estimasicsl.berat, estimasicsl.panjang, sumber.namasumber, estimasicsl.mpm, estimasicsl.menit, estimasicsl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicsl.berattarget, estimasicsl.targetcoat, finished.namafinished, estimasicsl.keterangan FROM estimasicsl INNER JOIN sumber ON estimasicsl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicsl.idspec=spec.idspec INNER JOIN coat ON estimasicsl.idcoat=coat.idcoat INNER JOIN orders ON estimasicsl.idorder=orders.idorder INNER JOIN finished ON estimasicsl.idfinished=finished.idfinished WHERE estimasicsl.selesai=0");
 		$tampil     = mysqli_query($con,$query);
 		while ($data=mysqli_fetch_array($tampil)) {
 			$no++;
@@ -83,12 +83,14 @@
 					<td>$data[jam]</td>
 					<td>$data[namaspec]</td>
 					<td>$data[namacoat]</td>
-					<td></td>
+					<td>$data[targetcoat]</td>
 					<td>$data[berattarget] ton</td>
 					<td>$data[namaorder]</td>					
 					<td>$data[namafinished]</td>
 					<td>$data[keterangan]</td>
-					<td></td>
+					<td>
+						<a href='estimasi_csl_update.php?selesai=$data[idcsl]'><button class='btn btn-default'>Done</button></a>
+					</td>
 				</tr>
 			";
 		

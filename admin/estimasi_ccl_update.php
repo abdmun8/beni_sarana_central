@@ -6,10 +6,10 @@
 		}
 	if (isset($_GET['selesai'])) {
 		$id      = $_GET['selesai'];
-		$sql     = ("UPDATE estimasicgl SET selesai=1 where idcgl='$id'");
+		$sql     = ("UPDATE estimasiccl SET selesai=1 where idccl='$id'");
 		$update  = mysqli_query($con,$sql);
 		if ($update) {
-			echo "<script>window.open('estimasi_cgl.php','_self')</script>";
+			echo "<script>window.open('estimasi_ccl.php','_self')</script>";
 		}
 		else{
 			echo "gagal";

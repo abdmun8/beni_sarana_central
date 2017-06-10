@@ -51,8 +51,12 @@
 	<div class="col-md-3" style="padding-bottom: 30px;"><a href="laporan.php"><img src="../asset/img/report.png" width="80%"></a><br>
 	<p style="font-weight: bolder; font-size: 30px;">Laporan</p>
 	</div>
+	<div class="col-md-3" style="padding-bottom: 30px;"><a href="color.php"><img src="../asset/img/color.png" width="80%"></a><br>
+	<p style="font-weight: bolder; font-size: 30px;">Color</p>
 	</div>
-	
+	<div class="col-md-3" style="padding-bottom: 30px;"><a href="customer.php"><img src="../asset/img/customer.png" width="80%"></a><br>
+	<p style="font-weight: bolder; font-size: 30px;">customer</p>
+	</div>
 </body>
 </html>
 <?php
