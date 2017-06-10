@@ -34,8 +34,8 @@
 <body>
 <div class="container">
 <div class="col-md-8 col-md-offset-2">
-	<h1 style="padding-top: 30px; text-align: center;">Estimasi CSL</h1>
-	<a href="estimasi_csl.php" class="btn btn-default">Lihat Estimasi CSL</a>
+	<h1 style="padding-top: 30px; text-align: center;">Estimasi CCL</h1>
+	<a href="estimasi_ccl.php" class="btn btn-default">Lihat Estimasi CCL</a>
 			<hr>
 				<form action="" method="post">
 					<div class="form-group">
@@ -45,14 +45,6 @@
 					<div class="form-group">
 					    <label>Lebar</label>
 					    <input type="text" class="form-control" name="lebar" required autofocus>
-					</div>
-					<div class="form-group">
-					    <label>Berat</label>
-					    <input type="text" class="form-control" name="berat" required autofocus>
-					</div>
-					<div class="form-group">
-					    <label>Panjang</label>
-					    <input type="text" class="form-control" name="panjang" required autofocus>
 					</div>
 					<div class="form-group">
 					    <label>Spec</label> 
@@ -67,16 +59,41 @@
 					    </select>					    	
 					</div>
 					<div class="form-group">
-					    <label>Spec</label>
-					    <select class="form-control" name="spec" >
+					    <label>Color</label>
+					    <select class="form-control" name="color" >
 					    <?php
-					    $query  = ("SELECT * FROM spec ORDER BY namaspec ASC");
+					    $query  = ("SELECT * FROM color ORDER BY namacolor ASC");
 					    $tampil = mysqli_query($con,$query);
 					    while ($data=mysqli_fetch_array($tampil)) {
-					    	echo "<option value=$data[idspec]>$data[namaspec]</option>";
+					    	echo "<option value=$data[idcolor]>$data[namacolor]</option>";
 					    }
 					    ?>	
 					    </select>					    	
+					</div>
+					<div class="form-group">
+					    <label>Qty</label>
+					    <input type="text" class="form-control" name="qty" required autofocus>
+					</div>
+					<div class="form-group">
+					    <label>Customer</label>
+					    <select class="form-control" name="customer" >
+					    <?php
+					    $query  = ("SELECT * FROM customer ORDER BY namacustomer ASC");
+					    $tampil = mysqli_query($con,$query);
+					    while ($data=mysqli_fetch_array($tampil)) {
+					    	echo "<option value=$data[idcustomer]>$data[namacustomer]</option>";
+					    }
+					    ?>	
+					    </select>					    	
+					</div>
+					<div class="form-group">
+					    <label>Tanggal order</label>
+					    <input type="text" class="form-control tgl_order" name="tgl_order" required autofocus>
+					</div>
+					</form>
+					<div class="form-group">
+					    <label>Mill</label>
+					    <input type="text" class="form-control" name="mill" required autofocus>
 					</div>
 					<div class="form-group">
 					    <label>Coat</label>
@@ -91,40 +108,12 @@
 					    </select>					    	
 					</div>
 					<div class="form-group">
-					    <label>Order</label>
-					    <select class="form-control" name="order" >
-					    <?php
-					    $query  = ("SELECT * FROM orders ORDER BY namaorder ASC");
-					    $tampil = mysqli_query($con,$query);
-					    while ($data=mysqli_fetch_array($tampil)) {
-					    	echo "<option value=$data[idorder]>$data[namaorder]</option>";
-					    }
-					    ?>	
-					    </select>					    	
-					</div>					
-					<div class="form-group">
-					    <label>Berat Target</label>
-					    <input type="text" class="form-control" name="berattarget" required autofocus>
+					    <label>Rencana Produksi</label>
+					    <input type="text" class="form-control rencana_produksi" name="rencana_produksi" required autofocus>
 					</div>
 					<div class="form-group">
-					    <label>Finished</label>
-					    <select class="form-control" name="finished" >
-					    <?php
-					    $query  = ("SELECT * FROM finished ORDER BY namafinished ASC");
-					    $tampil = mysqli_query($con,$query);
-					    while ($data=mysqli_fetch_array($tampil)) {
-					    	echo "<option value=$data[idfinished]>$data[namafinished]</option>";
-					    }
-					    ?>	
-					    </select>					    	
-					</div>
-					<div class="form-group">
-					    <label>Keterangan</label>
-					    <input type="text" class="form-control" name="keterangan" required autofocus>
-					</div>
-					<div class="form-group">
-					    <label>Tanggal</label>
-					    <input type="text" class="form-control tanggal" name="tanggal" required autofocus>
+					    <label>Catatan</label>
+					    <textarea  type="text" class="form-control" name="catatan" required autofocus></textarea>
 					</div>
 					<div class="form-group">
 						<input type="submit" name="simpan" value="Simpan" class="btn btn-default">
@@ -134,19 +123,20 @@
 				</form>
 				<?php
 				if (isset($_POST['simpan'])) {
-					$tebal      = $_POST['tebal'];
-					$lebar      = $_POST['lebar'];
-					$berat      = $_POST['berat'];
-					$panjang    = $_POST['panjang'];
-					$idsumber   = $_POST['sumber'];
-					$idspec     = $_POST['spec'];					
-					$idcoat     = $_POST['coat'];
-					$idorder    = $_POST['order'];
-					$berattarget= $_POST['berattarget'];
-					$idfinished = $_POST['finished'];
-					$keterangan = $_POST['keterangan'];
-					$tanggal    = $_POST['tanggal'];
-					$query      = ("INSERT INTO estimasiccl (tebal, lebar, idnamaspec, idcolor, qty, idcustomer, tgl_order, mill, idcoat, rencana_produksi, catatan) VALUES ('$', '$', '$', '$', '$', '$', '$', '$', '$', '$', '$')");
+					$tebal               = $_POST['tebal'];
+					$lebar               = $_POST['lebar'];
+					$idspec              = $_POST['spec'];	
+					$idcolor             = $_POST['color'];	
+					$qty                 = $_POST['qty'];	
+					$idcustomer          = $_POST['customer'];
+					$tgl_order  		 = $_POST['tgl_order'];
+					$mill      			 = $_POST['mill'];			
+					$idcoat    			 = $_POST['coat'];
+					$rencana_produksi    = $_POST['rencana_produksi'];
+					$catatan             = $_POST['catatan'];
+					
+					
+					$query      = ("INSERT INTO estimasiccl (tebal, lebar, idspec, idcolor, qty, idcustomer, tgl_order, mill, idcoat, rencana_produksi, catatan) VALUES ('$tebal', '$lebar', '$idspec', '$idcolor', '$qty', '$idcustomer', '$tgl_order', '$mill', '$idcoat', '$rencana_produksi', '$catatan')");
 					$simpan     = mysqli_query($con,$query);
 					if ($simpan) {
 						echo "Data Berhasil disimpan";

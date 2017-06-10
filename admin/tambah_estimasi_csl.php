@@ -55,7 +55,7 @@
 					    <input type="text" class="form-control" name="panjang" required autofocus>
 					</div>
 					<div class="form-group">
-					    <label>Spec</label> 
+					    <label>Sumber</label> 
 					    <select class="form-control" name="sumber" >
 					    <?php
 					    $query  = ("SELECT * FROM sumber ORDER BY namasumber ASC");
@@ -91,6 +91,14 @@
 					    </select>					    	
 					</div>
 					<div class="form-group">
+					    <label>Target coat</label>
+					    <input type="text" class="form-control" name="targetcoat" required autofocus>
+					</div>
+					<div class="form-group">
+					    <label>Berat Target</label>
+					    <input type="text" class="form-control" name="berattarget" required autofocus>
+					</div>
+					<div class="form-group">
 					    <label>Order</label>
 					    <select class="form-control" name="order" >
 					    <?php
@@ -102,10 +110,6 @@
 					    ?>	
 					    </select>					    	
 					</div>					
-					<div class="form-group">
-					    <label>Berat Target</label>
-					    <input type="text" class="form-control" name="berattarget" required autofocus>
-					</div>
 					<div class="form-group">
 					    <label>Finished</label>
 					    <select class="form-control" name="finished" >
@@ -147,10 +151,10 @@
 					$keterangan = $_POST['keterangan'];
 					$tanggal    = $_POST['tanggal'];
 					$selesai    = 0;
-					$mpm        = 2;
-					$menit      = 1;
-					$jam        = 1;
-					$query      = ("INSERT INTO estimasicgl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, idfinished, keterangan, tgl, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$idfinished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')");
+					$mpm        = $berat/($tebal*$lebar*7.85)/1000.000;
+					$menit      = $mpm/60;;
+					$jam        = $mpm/60;;
+					$query      = ("INSERT INTO estimasicsl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, idfinished, keterangan, tgl, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$idfinished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')");
 					$simpan     = mysqli_query($con,$query);
 					if ($simpan) {
 						echo "Data Berhasil disimpan";
@@ -162,11 +166,6 @@
 
 </div>
 </div>
+
 </body>
 </html>
-<Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

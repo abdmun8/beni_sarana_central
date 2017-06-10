@@ -32,12 +32,16 @@
         <li><a href='spec.php'>Spec</a></li>
         <li><a href='finished.php'>Finished</a></li>
         <li><a href='coat.php'>Coat</a></li>
+        <li><a href='color.php'>Color</a></li>
+        <li><a href='customer.php'>Customer</a></li>
         <li class='dropdown'>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Schedule<span class='caret'></span></a>
           <ul class='dropdown-menu'>
-            <li><a href='estimasi_cgl.php'>Estimasi Produksi CGL</a></li>            
-            <li><a href='estimasi_csl.php'>Estimasi Produksi CSL</a></li> 
-            <li><a href='estimasi_ccl.php'>Estimasi Produksi CCL</a></li>
+
+            <li><a href='estimasi_cgl.php'>Estimasi Produksi CGL</a></li>
+            <li><a href='estimasi_csl.php'>Estimasi Produksi CSL</a></li>    
+            <li><a href='estimasi_ccl.php'>Estimasi Produksi CCL</a></li>    
+
           </ul>
         </li>
         <li class='dropdown'>
@@ -47,7 +51,15 @@
             <li><a href='stock_bahan_baku.php'>Stock Bahan Baku</a></li> 
           </ul>
         </li>
-        <li><a href='laporan.php'>Laporan</a></li> 
+        <li class='dropdown'>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Laporan<span class='caret'></span></a>
+        <ul class= 'dropdown-menu'>
+        <li><a href='laporan.php'>Laporan CGL</a></li>
+        <li><a href='laporan.php'>Laporan CSL</a></li>
+        <li><a href='laporan.php'>Laporan CSL</a></li>
+        </ul>
+      </li>
+
         ";
         }
         ?>

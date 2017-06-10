@@ -77,8 +77,6 @@
 					<td>$data[tgl_order]</td>
 					<td>$data[mill]</td>					
 					<td>$data[namacoat]</td>
-					<td>$data[namacoat]</td>
-					<td>$data[namacoat]</td>
 					<td>$data[rencana_produksi]</td>
 					<td>$data[keterangan]</td>
 					<td></td>
