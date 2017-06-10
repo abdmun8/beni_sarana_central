@@ -36,7 +36,8 @@
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Schedule<span class='caret'></span></a>
           <ul class='dropdown-menu'>
             <li><a href='estimasi_cgl.php'>Estimasi Produksi CGL</a></li>            
-            
+            <li><a href='estimasi_csl.php'>Estimasi Produksi CSL</a></li> 
+            <li><a href='estimasi_ccl.php'>Estimasi Produksi CCL</a></li>
           </ul>
         </li>
         <li class='dropdown'>
@@ -64,10 +65,6 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<!--
-dropdown estimasi
-<li><a href='estimasi_csl.php'>Estimasi Produksi CSL</a></li> 
-<li><a href='estimasi_ccl.php'>Estimasi Produksi CCL</a></li>
--->
+
 </body>
 </html>
