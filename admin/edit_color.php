@@ -39,7 +39,7 @@
 					$query    = ("UPDATE color SET namacolor = '$namacolor' WHERE idcolor = '$idcolor'");
 					$simpan   = mysqli_query($con,$query);
 					if ($simpan) {
-						header('Location: color.php');						
+						echo "<script>window.open('_self','color.php')</script>";		
 					}else{
 						echo "Gagal!";
 					}

@@ -67,7 +67,7 @@
 				</tr>
 			";
 		$no=0;
-		$query     = ("SELECT estimasicsl.tebal, estimasicsl.lebar, estimasicsl.berat, estimasicsl.panjang, sumber.namasumber, estimasicsl.mpm, estimasicsl.menit, estimasicsl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicsl.berattarget, estimasicsl.targetcoat, finished.namafinished, estimasicsl.keterangan FROM estimasicsl INNER JOIN sumber ON estimasicsl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicsl.idspec=spec.idspec INNER JOIN coat ON estimasicsl.idcoat=coat.idcoat INNER JOIN orders ON estimasicsl.idorder=orders.idorder INNER JOIN finished ON estimasicsl.idfinished=finished.idfinished WHERE estimasicsl.selesai=0");
+		$query     = ("SELECT estimasicsl.tebal, estimasicsl.lebar, estimasicsl.berat, estimasicsl.panjang, sumber.namasumber, estimasicsl.mpm, estimasicsl.menit, estimasicsl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicsl.berattarget, finished.namafinished, estimasicsl.keterangan FROM estimasicsl INNER JOIN sumber ON estimasicsl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicsl.idspec=spec.idspec INNER JOIN coat ON estimasicsl.idcoat=coat.idcoat INNER JOIN orders ON estimasicsl.idorder=orders.idorder INNER JOIN finished ON estimasicsl.idfinished=finished.idfinished WHERE estimasicsl.selesai=0");
 		$tampil     = mysqli_query($con,$query);
 		while ($data=mysqli_fetch_array($tampil)) {
 			$no++;

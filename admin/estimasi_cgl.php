@@ -88,8 +88,10 @@
 					<td>$data[namafinished]</td>
 					<td>$data[keterangan]</td>
 					<td>
-						<a href='estimasi_cgl_update.php?selesai=$data[idcgl]'><button class='btn btn-default'>Done</button></a>
-					</td>
+						<a href='estimasi_cgl_update.php?selesai=$data[idcgl]'><button class='btn btn-default'>Done</button></a>";
+
+
+					echo "</td>
 				</tr>
 			";
 		}
