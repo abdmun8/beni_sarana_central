@@ -35,7 +35,7 @@ require_once 'template/header.php';
 	</div>
 	<div class="col-md-4 col-sm-6 col-xs-12" align="center">
 		<h3>Stock</h3>
-		<img src="asset/img/stock.png">
+		<div class="col-md-3" style="padding-bottom: 20px;"><a href="stock_bahan.php"><img src="asset/img/stock.png">
 	</div>
 </div>
 </div>

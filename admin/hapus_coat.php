@@ -19,6 +19,6 @@
     }
   }
   // melakukan redirect ke halaman coat.php
-  echo "<script>alert('coat telah dihapus','_self')</script>";
+  echo "<script>swal('coat telah dihapus','_self')</script>";
   echo "<script>window.open('coat.php','_self')</script>";
 ?>
