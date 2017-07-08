@@ -67,9 +67,16 @@
 				</tr>
 			";
 		$no=0;
-		$query     = ("SELECT estimasicsl.tebal, estimasicsl.lebar, estimasicsl.berat, estimasicsl.panjang, sumber.namasumber, estimasicsl.mpm, estimasicsl.menit, estimasicsl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicsl.berattarget, finished.namafinished, estimasicsl.keterangan FROM estimasicsl INNER JOIN sumber ON estimasicsl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicsl.idspec=spec.idspec INNER JOIN coat ON estimasicsl.idcoat=coat.idcoat INNER JOIN orders ON estimasicsl.idorder=orders.idorder INNER JOIN finished ON estimasicsl.idfinished=finished.idfinished WHERE estimasicsl.selesai=0");
+		$query     = ("SELECT a.idcsl, a.tebal, a.lebar, a.berat, a.panjang, sumber.namasumber, a.mpm, a.menit, a.jam, spec.namaspec, c.namacoat, a.targetcoat, orders.namaorder, a.berattarget, finished.namafinished, a.keterangan
+			FROM estimasicsl a
+			INNER JOIN sumber ON a.idsumber=sumber.idsumber
+			INNER JOIN spec ON a.idspec=spec.idspec
+			INNER JOIN coat c ON a.idcoat=c.idcoat
+			INNER JOIN orders ON a.idorder=orders.idorder
+			INNER JOIN finished ON a.idfinished=finished.idfinished
+			WHERE a.selesai=0");
 		$tampil     = mysqli_query($con,$query);
-		while ($data=mysqli_fetch_array($tampil)) {
+		while ($data = mysqli_fetch_array($tampil)) {
 			$no++;
 			echo "
 				<tr class='text-center'>

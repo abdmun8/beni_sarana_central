@@ -148,13 +148,16 @@
 					$idorder    = $_POST['order'];
 					$berattarget= $_POST['berattarget'];
 					$idfinished = $_POST['finished'];
+					$targetcoat = $_POST['targetcoat'];
+
+
 					$keterangan = $_POST['keterangan'];
 					$tanggal    = $_POST['tanggal'];
 					$selesai    = 0;
 					$mpm        = $berat/($tebal*$lebar*7.85)/1000.000;
 					$menit      = $mpm/60;;
 					$jam        = $mpm/60;;
-					$query      = ("INSERT INTO estimasicsl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, idfinished, keterangan, tgl, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$idfinished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')");
+					$query      = ("INSERT INTO estimasicsl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, idfinished, keterangan, tgl, selesai, mpm, menit, jam, targetcoat) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$idfinished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam', $targetcoat)");
 					$simpan     = mysqli_query($con,$query);
 					if ($simpan) {
 						echo "Data Berhasil disimpan";
