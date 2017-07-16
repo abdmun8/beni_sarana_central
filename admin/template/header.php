@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap-datepicker.css">
   <script src="../asset/js/jquery.min.js"></script>
   <script src="../asset/js/bootstrap.min.js" ></script>
-  
+
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -39,8 +39,9 @@
           <ul class='dropdown-menu'>
 
             <li><a href='estimasi_cgl.php'>Estimasi Produksi CGL</a></li>
-            <li><a href='estimasi_csl.php'>Estimasi Produksi CSL</a></li>    
-            <li><a href='estimasi_ccl.php'>Estimasi Produksi CCL</a></li>    
+            <li><a href='estimasi_csl.php'>Estimasi Produksi CSL</a></li>
+            <li><a href='estimasi_ccl.php'>Estimasi Produksi CCL</a></li>
+            <li><a href='estimasi_ccl.php'>Estimasi Produksi Shearing</a></li>
 
           </ul>
         </li>
@@ -48,15 +49,27 @@
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Stock<span class='caret'></span></a>
           <ul class='dropdown-menu'>
             <li><a href='stock_coil.php'>Stock Coil</a></li>
-            <li><a href='stock_bahan_baku.php'>Stock Bahan Baku</a></li> 
+            <ul>
+                <li>Stock CGL</li>
+                <li>Stock CSL</li>
+                <li>Stock CCL</li>
+                <li>Stock Shearing</a></li>
+            </ul>
+            <li><a href='stock_bahan_baku.php'>Stock Bahan Baku Penunjang</a></li>
+              <ul>
+                <li></>
+                <li></>
+              </ul>
+            <li>Stock</li>
+            <li>Stock</li>
           </ul>
         </li>
         <li class='dropdown'>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Laporan<span class='caret'></span></a>
         <ul class= 'dropdown-menu'>
         <li><a href='laporan.php'>Laporan CGL</a></li>
-        <li><a href='laporan.php'>Laporan CSL</a></li>
-        <li><a href='laporan.php'>Laporan CSL</a></li>
+        <li><a href='laporan_csl.php'>Laporan CSL</a></li>
+        <li><a href='laporan_ccl.php'>Laporan CSL</a></li>
         </ul>
       </li>
 
@@ -65,15 +78,15 @@
         ?>
       </ul>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">         
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li>    
+        <li>
           <?php
           if (isset($_SESSION['username'])) {
             echo "<a href='logout.php'>Logout</a>";
           }
           ?>
-        </li>        
+        </li>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

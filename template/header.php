@@ -39,7 +39,14 @@
             <li><a href="stock_bahan.php">Stock Bahan Baku</a></li> 
           </ul>
         </li>
-        <li><a href="laporan.php">Laporan</a></li>        
+        <li class='dropdown'>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Laporan<span class='caret'></span></a>
+          <ul class= 'dropdown-menu'>
+          <li><a href='laporan.php'>Laporan CGL</a></li>
+          <li><a href='laporan_csl.php'>Laporan CSL</a></li>
+          <li><a href='laporan_ccl.php'>Laporan CSL</a></li>
+          </ul>
+      </li>        
       </ul>     
       <ul class="nav navbar-nav navbar-right">
         <li>

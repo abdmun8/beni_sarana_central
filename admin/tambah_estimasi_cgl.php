@@ -148,11 +148,12 @@
 					$tanggal    = $_POST['tanggal'];
 					$selesai    = 0;
 					$mpm        = $_POST['mpm'];
-					$menit      = $panjang/60;
-					$jam        = $menit/60;
+					$menit      = $;
+					$jam        = $;
 					$query      = ("INSERT INTO estimasicgl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, idfinished, keterangan, tgl, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$idfinished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')");
 					$simpan     = mysqli_query($con,$query);
 					if ($simpan) {
+						
 						echo "Data Berhasil disimpan";
 					}else{
 					echo mysqli_error($con)."gagal<br>";

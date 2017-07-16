@@ -9,8 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PT SCB - Login</title>
-	<link href="<?php echo base_url()?>asset/css/sweetalert.css" rel="stylesheet">
+	<title>PT SCB - Login</title>	
 </head>
 <body>
 	<div class="container" >

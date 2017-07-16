@@ -1,0 +1,37 @@
+home & admin
+--------------------------------
+1. stock
+	a. stock bahan baku penunjang
+		1. cgl
+		2. csl
+		3. ccl
+			- cat
+		4. shearing
+2. laporan
+	a. laporan ka shift
+		 shift 1
+		 	1. cgl
+			2. csl
+			3. ccl
+			4. shearing
+		 shift 2
+		 	1. cgl
+			2. csl
+			3. ccl
+			4. shearing
+		 shift 3
+		 	1. cgl
+			2. csl
+			3. ccl
+			4. shearing
+
+3. schedule 
+	a. shearing
+
+
+tambah keterangan di laporan, jika selesai, jika belum selesai
+
+
+
+
+		
