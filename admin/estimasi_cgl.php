@@ -95,7 +95,30 @@
 				</tr>
 			";
 		}
-		echo "</table>";
+		$q = "SELECT SUM(berat) as total_berat,sum(panjang) as total_panjang FROM estimasicgl";
+		$result = mysqli_query($con,$q); 
+		$row = mysqli_fetch_assoc($result); 
+		// print_r($row);
+		// die;
+		// $sum = $result['total_berat'];
+		echo "
+			<tr class='text-center'>
+				<td colspan='2'>Total</td>
+				<td>$row[total_berat] ton</td>
+				<td>";echo round($row['total_panjang']); echo " m </td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>";
+		echo "tes bra";
 	
 		
 		
