@@ -44,8 +44,7 @@
 		$query  = ("SELECT bahan.idbahan, bahan.tebal, bahan.lebar, bahan.berat, bahan.panjang, spec.namaspec, sumber.namasumber FROM bahan INNER JOIN spec ON bahan.idspec=spec.idspec INNER JOIN sumber ON bahan.idsumber=sumber.idsumber");
 		$tampil = mysqli_query($con,$query);
 		while($data=mysqli_fetch_array($tampil)){
-			print_r($data);
-			die;
+			
 			$no++;
 		echo "
 		<tr style='text-align:center;'>

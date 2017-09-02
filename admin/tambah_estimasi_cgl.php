@@ -104,15 +104,7 @@
 					</div>
 					<div class="form-group">
 					    <label>Finished</label>
-					    <select class="form-control" name="finished" >
-					    <?php
-					    $query  = ("SELECT * FROM finished ORDER BY namafinished ASC");
-					    $tampil = mysqli_query($con,$query);
-					    while ($data=mysqli_fetch_array($tampil)) {
-					    	echo "<option value=$data[idfinished]>$data[namafinished]</option>";
-					    }
-					    ?>	
-					    </select>					    	
+					     <input type="text" class="form-control" name="finished" required autofocus>		    	
 					</div>
 					<div class="form-group">
 					    <label>Keterangan</label>
@@ -137,20 +129,20 @@
 					$tebal      = $_POST['tebal'];
 					$lebar      = $_POST['lebar'];
 					$berat      = $_POST['berat'];
-					$panjang    = $berat/($tebal*$lebar*7.85)/1000.000;
+					$panjang    = $berat/($tebal*$lebar *7.85)/1000.000;
 					$idsumber   = $_POST['sumber'];
 					$idspec     = $_POST['spec'];					
 					$idcoat     = $_POST['coat'];
 					$idorder    = $_POST['order'];
 					$berattarget= $_POST['berattarget'];
-					$idfinished = $_POST['finished'];
+					$finished   = $_POST['finished'];
 					$keterangan = $_POST['keterangan'];
 					$tanggal    = $_POST['tanggal'];
 					$selesai    = 0;
 					$mpm        = $_POST['mpm'];
-					$menit      = $;
-					$jam        = $;
-					$query      = ("INSERT INTO estimasicgl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, idfinished, keterangan, tgl, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$idfinished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')");
+					$menit      = $panjang/$mpm;
+					$jam        = $menit/60;
+					$query      = ("INSERT INTO estimasicgl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, finished, keterangan, tgl, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$finished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')");
 					$simpan     = mysqli_query($con,$query);
 					if ($simpan) {
 						
