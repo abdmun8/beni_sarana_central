@@ -38,8 +38,8 @@
 				</tr>
 				<tr style='text-align: center; Height:30px; font-weight: bold;' bgcolor='#01C388'>
 					<td>Ukuran</td>
-					<td>Berat</td>
-					<td>Panjang</td>
+					<td>Ton</td>
+					<td>Meter</td>
 					<td>Sumber</td>
 					<td>MPM</td>
 					<td>Menit</td>
@@ -52,6 +52,7 @@
 				</tr>
 			";
 		$no=0;
+		$a=1000;
 		$query    = "SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,estimasicgl.keterangan
 			FROM estimasicgl
 			INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
@@ -59,15 +60,15 @@
 			INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat
 			INNER JOIN orders ON estimasicgl.idorder=orders.idorder
 			WHERE selesai=0
-			ORDER BY estimasicgl.tgl ASC";
+			ORDER BY estimasicgl.tgl_produksi ASC";
 		$tampil     = mysqli_query($con,$query);
 		foreach ($tampil as $data) {
 			$no++;
 			echo "
 				<tr class='text-center'>
 					<td>$no</td>
-					<td>$data[tebal] m x $data[lebar] m</td>
-					<td>$data[berat] ton</td>
+					<td>$data[tebal] x $data[lebar] </td>
+					<td>".$data['berat']/$a." </td>
 					<td>$data[panjang] m</td>
 					<td>$data[namasumber]</td>
 					<td>$data[mpm]</td>

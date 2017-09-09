@@ -32,6 +32,21 @@
         </script>
 </head>
 <body>
+<?php
+
+
+	$id = $_GET['id'];
+	$query    = "SELECT estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,tgl_produksi,estimasicgl.keterangan
+				FROM estimasicgl
+				INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
+				INNER JOIN spec ON estimasicgl.idspec=spec.idspec
+				INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat
+				INNER JOIN orders ON estimasicgl.idorder=orders.idorder
+				WHERE idcgl=".$id." ";
+			$tampil     = mysqli_query($con,$query);
+			foreach ($tampil as $data) {
+			
+?>
 <div class="container">
 <div class="col-md-8 col-md-offset-2">
 	<h1 style="padding-top: 30px; text-align: center;">Estimasi CGL</h1>
@@ -40,18 +55,34 @@
 				<form action="" method="post">
 					<div class="form-group">
 					    <label>Tebal</label>
-					    <input type="text" class="form-control" name="tebal" required autofocus>
+					    <input type="text" class="form-control" name="tebal" required autofocus value="<?=$data['tebal']?>">
 					</div>
 					<div class="form-group">
 					    <label>Lebar</label>
-					    <input type="text" class="form-control" name="lebar" required autofocus>
+					    <input type="text" class="form-control" name="lebar" value="<?=$data['lebar']?>" required>
 					</div>
 					<div class="form-group">
 					    <label>Berat</label>
-					    <input type="text" class="form-control" name="berat" required autofocus>
-					</div>					
+					    <input type="text" class="form-control" name="berat" value="<?=$data['berat']/1000;?>"required>
+					</div>		
 					<div class="form-group">
-					    <label>Spec</label> 
+					    <label>Berat Target</label>
+					    <input type="text" class="form-control" name="berattarget" value="<?=$data['berattarget']?>" required>
+					</div>
+					<div class="form-group">
+					    <label>Finished</label>
+					     <input type="text" class="form-control" name="finished" value="<?=$data['finished']?>" required>		    	
+					</div>
+					<div class="form-group">
+					    <label>Keterangan</label>
+					    <input type="text" class="form-control" name="keterangan" value="<?=$data['keterangan']?>" required>
+					</div>
+					<div class="form-group">
+					    <label>Tanggal</label>
+					    <input type="text" class="form-control tanggal" name="tanggal" value="<?=$data['tgl_produksi']?>" required>
+					</div>			
+					<div class="form-group">
+					    <label>Sumber</label> 
 					    <select class="form-control" name="sumber" >
 					    <?php
 					    $query  = ("SELECT * FROM sumber ORDER BY namasumber ASC");
@@ -98,22 +129,7 @@
 					    ?>	
 					    </select>					    	
 					</div>					
-					<div class="form-group">
-					    <label>Berat Target</label>
-					    <input type="text" class="form-control" name="berattarget" required autofocus>
-					</div>
-					<div class="form-group">
-					    <label>Finished</label>
-					     <input type="text" class="form-control" name="finished" required autofocus>		    	
-					</div>
-					<div class="form-group">
-					    <label>Keterangan</label>
-					    <input type="text" class="form-control" name="keterangan" required autofocus>
-					</div>
-					<div class="form-group">
-					    <label>Tanggal</label>
-					    <input type="text" class="form-control tanggal" name="tanggal" required autofocus>
-					</div>
+					
 					<div class="form-group">
 						<input type="submit" name="simpan" value="Simpan" class="btn btn-default">
 						<input type="reset" value="Reset" class="btn btn-default">
@@ -121,6 +137,9 @@
 
 				</form>
 				<?php
+
+				}
+
 				if (isset($_POST['simpan'])) {
 					$tebal      = $_POST['tebal'];
 					$lebar      = $_POST['lebar'];
@@ -134,7 +153,6 @@
 					$finished   = $_POST['finished'];
 					$keterangan = $_POST['keterangan'];
 					$tanggal    = $_POST['tanggal'];
-					$selesai    = 0;
 					$mpm        = ubah_speed($tebal);
 					if ($mpm == 0) {
 						echo "<script> alert('tebal yang anda masukan tidak sesuai','_self')</script>";
@@ -144,11 +162,18 @@
 					
 					$menit      = round(($panjang/$mpm));
 					$jam        = round(($menit/60));
-					$query      = "INSERT INTO estimasicgl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, finished, keterangan, tgl_produksi, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$finished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')";
+					$query      = "UPDATE  estimasicgl set tebal=".$tebal.", lebar=".$lebar.", 
+						berat=".$berat.", panjang=".$panjang.", idsumber=".$idsumber.", 
+						idspec=".$idspec.", idcoat=".$idcoat.", idorder=".$idorder.", 
+						berattarget='".$berattarget."', finished='".$finished."', 
+						keterangan='".$keterangan."',
+						tgl_produksi='".$tanggal."', mpm=".$mpm.", 
+						menit=".$menit.", jam = ".$jam." where idcgl=".$id." ";
 					$simpan     = mysqli_query($con,$query);
 					if ($simpan) {
 						
-						echo "<script> alert('data Berhasil Disimpan','_self')</script>";
+						echo "<script> alert('data Berhasil Diupdate','_self')</script>";
+						echo "<script> window.open('estimasi_cgl.php','_self')</script>";
 					}else{
 					echo mysqli_error($con)."gagal<br>";
 					}

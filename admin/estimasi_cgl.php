@@ -70,6 +70,7 @@
 				</tr>
 			";
 		$no=0;
+		$a=1000;
 		$query     = ("SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,tgl_produksi,estimasicgl.keterangan
 			FROM estimasicgl
 			INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
@@ -85,7 +86,7 @@
 				<tr class='text-center'>
 					<td>$no</td>
 					<td>$data[tebal] x $data[lebar] </td>
-					<td>$data[berat]</td>
+					<td>".$data['berat']/$a."</td>
 					<td>$data[panjang] m</td>
 					<td>$data[namasumber]</td>
 					<td>$data[mpm]</td>
@@ -102,7 +103,7 @@
 						<a href='estimasi_cgl_update.php?selesai=$data[idcgl]'><button class='btn btn-success btn-xs'>Done</button></a>";
 					echo "</td>
 					<td>
-						<a href='estimasi_cgl_update.php?selesai=$data[idcgl]'><button class='btn btn-primary btn-xs'>Edit</button></a>";
+						<a href='edit_estimasi_cgl.php?id=$data[idcgl]'><button class='btn btn-primary btn-xs'>Edit</button></a>";
 					echo "</td>
 				</tr>
 			";
