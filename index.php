@@ -27,11 +27,11 @@ require_once 'template/header.php';
 	<p align="center">Jika anda belum mengerti cara menggunakan sistem ini, silahkan baca operation manual <a href="manual.php">disini</a></p>
 	<div class="col-md-4 col-sm-6 col-xs-12" align="center">
 		<h3>Jadwal Produksi</h3>
-		<img src="asset/img/jadwal.png">		
+		<a href="stock_coil.php" ><img src="asset/img/jadwal.png"></a>		
 	</div>
 	<div class="col-md-4 col-sm-6 col-xs-12" align="center">
 		<h3>Laporan</h3>
-		<img src="asset/img/report.png">
+		<a href='laporan.php'> <img src="asset/img/report.png"></a>
 	</div>
 	<div class="col-md-4 col-sm-6 col-xs-12" align="center">
 		<h3>Stock</h3>

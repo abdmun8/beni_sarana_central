@@ -41,14 +41,22 @@
 					<td>Order</td>
 					<td>Berat Target</td>
 					<td>Finished</td>
+					<td>Tgl Produksi</td>
 					<td>Tgl Selesai</td>
 					<td>Keterangan</td>
 				</tr>
 				<?php
 				$no=0;
-				$query     = ("SELECT estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicgl.berattarget, finished.namafinished, estimasicgl.tgl, estimasicgl.keterangan FROM estimasicgl INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicgl.idspec=spec.idspec INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat INNER JOIN orders ON estimasicgl.idorder=orders.idorder INNER JOIN finished ON estimasicgl.idfinished=finished.idfinished WHERE estimasicgl.selesai=1");
+				$query = ("SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,tgl_produksi,tgl_selesai,estimasicgl.keterangan
+					FROM estimasicgl
+					INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
+					INNER JOIN spec ON estimasicgl.idspec=spec.idspec
+					INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat
+					INNER JOIN orders ON estimasicgl.idorder=orders.idorder
+					WHERE selesai=1
+					ORDER BY estimasicgl.tgl_produksi ASC");
 				$tampil     = mysqli_query($con,$query);
-				while ($data=mysqli_fetch_array($tampil)) {
+				foreach ($tampil as $data) {
 					$no++;
 					echo "
 						<tr class='text-center'>
@@ -65,13 +73,16 @@
 							<td>$data[namacoat]</td>
 							<td>$data[namaorder]</td>
 							<td>$data[berattarget] ton</td>
-							<td>$data[namafinished]</td>
-							<td>$data[tgl]</td>
+							<td>$data[finished]</td>
+							<td>$data[tgl_produksi]</td>
+							<td>$data[tgl_selesai]</td>
 							<td>$data[keterangan]</td>
 						</tr>
 					";
 				}
 				echo "</table>";
+				
+					
 				?>
 	
 	</div>

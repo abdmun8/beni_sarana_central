@@ -48,8 +48,9 @@
 					<td>Speed</td>
 					<td colspan='2'>Waktu Prod</td>
 					<td colspan='5'>Target Produk</td>
+					<td rowspan='2'>Tgl Produksi</td>
 					<td rowspan='2'>Keterangan</td>
-					<td rowspan='2'>Action</td>					
+					<td colspan='2' rowspan='2'>Action</td>					
 				</tr>
 				<tr style='text-align: center; Height:30px; font-weight: bold;' bgcolor='#01C388'>
 					<td>Ukuran</td>
@@ -63,19 +64,28 @@
 					<td>Coat</td>
 					<td>Order</td>
 					<td>Berat Target</td>
-					<td>Finished</td>					
+					<td>Finished</td>
+
+										
 				</tr>
 			";
 		$no=0;
-		$query     = ("SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicgl.berattarget, finished.namafinished, estimasicgl.keterangan FROM estimasicgl INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicgl.idspec=spec.idspec INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat INNER JOIN orders ON estimasicgl.idorder=orders.idorder INNER JOIN finished ON estimasicgl.idfinished=finished.idfinished WHERE selesai=0 ORDER BY estimasicgl.tgl ASC");
+		$query     = ("SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,tgl_produksi,estimasicgl.keterangan
+			FROM estimasicgl
+			INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
+			INNER JOIN spec ON estimasicgl.idspec=spec.idspec
+			INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat
+			INNER JOIN orders ON estimasicgl.idorder=orders.idorder
+			WHERE selesai=0
+			ORDER BY estimasicgl.tgl_produksi ASC");
 		$tampil     = mysqli_query($con,$query);
-		while ($data=mysqli_fetch_array($tampil)) {
+		foreach ($tampil as $data) {
 			$no++;
 			echo "
 				<tr class='text-center'>
 					<td>$no</td>
-					<td>$data[tebal] m x $data[lebar] m</td>
-					<td>$data[berat] ton</td>
+					<td>$data[tebal] x $data[lebar] </td>
+					<td>$data[berat]</td>
 					<td>$data[panjang] m</td>
 					<td>$data[namasumber]</td>
 					<td>$data[mpm]</td>
@@ -84,44 +94,19 @@
 					<td>$data[namaspec]</td>
 					<td>$data[namacoat]</td>
 					<td>$data[namaorder]</td>
-					<td>$data[berattarget] ton</td>
-					<td>$data[namafinished]</td>
+					<td>$data[berattarget]</td>
+					<td>$data[finished]</td>
+					<td>$data[tgl_produksi]</td>
 					<td>$data[keterangan]</td>
 					<td>
-						<a href='estimasi_cgl_update.php?selesai=$data[idcgl]'><button class='btn btn-default'>Done</button></a>";
-
-
+						<a href='estimasi_cgl_update.php?selesai=$data[idcgl]'><button class='btn btn-success btn-xs'>Done</button></a>";
+					echo "</td>
+					<td>
+						<a href='estimasi_cgl_update.php?selesai=$data[idcgl]'><button class='btn btn-primary btn-xs'>Edit</button></a>";
 					echo "</td>
 				</tr>
 			";
 		}
-		$q = "SELECT SUM(berat) as total_berat,sum(panjang) as total_panjang FROM estimasicgl";
-		$result = mysqli_query($con,$q); 
-		$row = mysqli_fetch_assoc($result); 
-		// print_r($row);
-		// die;
-		// $sum = $result['total_berat'];
-		echo "
-			<tr class='text-center'>
-				<td colspan='2'>Total</td>
-				<td>$row[total_berat] ton</td>
-				<td>";echo round($row['total_panjang']); echo " m </td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>";
-		echo "tes bra";
-	
-		
-		
 
 ?>	
 </div>

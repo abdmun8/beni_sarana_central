@@ -115,10 +115,6 @@
 					    <input type="text" class="form-control tanggal" name="tanggal" required autofocus>
 					</div>
 					<div class="form-group">
-					    <label>MPM</label>
-					    <input type="text" class="form-control" name="mpm" required autofocus>
-					</div>
-					<div class="form-group">
 						<input type="submit" name="simpan" value="Simpan" class="btn btn-default">
 						<input type="reset" value="Reset" class="btn btn-default">
 					</div>
@@ -129,7 +125,7 @@
 					$tebal      = $_POST['tebal'];
 					$lebar      = $_POST['lebar'];
 					$berat      = $_POST['berat'];
-					$panjang    = $berat/($tebal*$lebar *7.85)/1000.000;
+					$panjang    = round((($berat/($tebal*$lebar*7.85))*1000));
 					$idsumber   = $_POST['sumber'];
 					$idspec     = $_POST['spec'];					
 					$idcoat     = $_POST['coat'];
@@ -139,18 +135,27 @@
 					$keterangan = $_POST['keterangan'];
 					$tanggal    = $_POST['tanggal'];
 					$selesai    = 0;
-					$mpm        = $_POST['mpm'];
-					$menit      = $panjang/$mpm;
-					$jam        = $menit/60;
-					$query      = ("INSERT INTO estimasicgl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, finished, keterangan, tgl, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$finished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')");
+					$mpm        = ubah_speed($tebal);
+					if ($mpm == 0) {
+						echo "<script> alert('tebal yang anda masukan tidak sesuai','_self')</script>";
+						die;						
+					}
+					$hadir;
+					
+					$menit      = round(($panjang/$mpm));
+					$jam        = round(($menit/60));
+					$query      = "INSERT INTO estimasicgl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, finished, keterangan, tgl, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$finished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')";
 					$simpan     = mysqli_query($con,$query);
 					if ($simpan) {
 						
-						echo "Data Berhasil disimpan";
+						echo "<script> alert('data Berhasil Disimpan','_self')</script>";
 					}else{
 					echo mysqli_error($con)."gagal<br>";
 					}
 				}
+				
+				
+
 				?>
 
 </div>

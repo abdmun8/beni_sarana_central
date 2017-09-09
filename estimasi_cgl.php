@@ -52,9 +52,16 @@
 				</tr>
 			";
 		$no=0;
-		$query     = ("SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicgl.berattarget, finished.namafinished, estimasicgl.keterangan FROM estimasicgl INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicgl.idspec=spec.idspec INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat INNER JOIN orders ON estimasicgl.idorder=orders.idorder INNER JOIN finished ON estimasicgl.idfinished=finished.idfinished WHERE selesai=0 ORDER BY estimasicgl.tgl ASC");
+		$query    = "SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,estimasicgl.keterangan
+			FROM estimasicgl
+			INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
+			INNER JOIN spec ON estimasicgl.idspec=spec.idspec
+			INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat
+			INNER JOIN orders ON estimasicgl.idorder=orders.idorder
+			WHERE selesai=0
+			ORDER BY estimasicgl.tgl ASC";
 		$tampil     = mysqli_query($con,$query);
-		while ($data=mysqli_fetch_array($tampil)) {
+		foreach ($tampil as $data) {
 			$no++;
 			echo "
 				<tr class='text-center'>
@@ -70,12 +77,15 @@
 					<td>$data[namacoat]</td>
 					<td>$data[namaorder]</td>
 					<td>$data[berattarget] ton</td>
-					<td>$data[namafinished]</td>
+					<td>$data[finished]</td>
 					<td>$data[keterangan]</td>
 				</tr>
 			";
 		}
-		echo "</table>";		
+		echo "</table>";
+		
+		
+					
 
 ?>	
 	
