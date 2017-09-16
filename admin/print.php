@@ -1,16 +1,16 @@
 <?php
-
-	session_start();
-	require_once '../fungsi.php';
-	if (!isset($_SESSION['username'])) {
-		header("Location:login.php");
-		}
+session_start();
+require_once '../fungsi.php';
+if (!isset($_SESSION['username'])) {
+	header("Location:login.php");
+	}
+$tgl=$_GET['tgl'];
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>PT SCB - Laoran</title>
-	<link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.min.css">
+	
 	<style type="text/css">
 		p a{
 		text-decoration: none;
@@ -25,7 +25,7 @@
 <div class="container-fluid">
 	<h1 style="padding-top: 70px; text-align: center; padding-bottom: 0;"></h1>
 		
-		<table class='table-bordered' style='width: 100%;padding-top: 0;' >
+		<table class='table-bordered' border='1px' style='width: 100%;padding-top: 0;' >
 				<tr>
 					<td style="text-align: center;padding-bottom: 6px;padding-top: 6px;" colspan="3" ><img alt="PT SCB" src="../asset/img/saranacentral3.png" height="80" width="110"></td>
 					<td colspan="9" style="padding-left: 8px;">
@@ -56,7 +56,7 @@
 					<td>Keterangan</td>
 				</tr>
 				<?php
-				$tgl=$_GET['tgl'];
+				
 				$total_berat='';
 				$total_panjang='';
 				$total_menit='';
