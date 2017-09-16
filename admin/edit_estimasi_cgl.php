@@ -36,9 +36,8 @@
 
 
 	$id = $_GET['id'];
-	$query    = "SELECT estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,tgl_produksi,estimasicgl.keterangan
+	$query    = "SELECT estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, estimasicgl.sumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,tgl_produksi, estimasicgl.code_sap, estimasicgl.keterangan
 				FROM estimasicgl
-				INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
 				INNER JOIN spec ON estimasicgl.idspec=spec.idspec
 				INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat
 				INNER JOIN orders ON estimasicgl.idorder=orders.idorder
@@ -74,6 +73,10 @@
 					     <input type="text" class="form-control" name="finished" value="<?=$data['finished']?>" required>		    	
 					</div>
 					<div class="form-group">
+					    <label>Code OP</label>
+					    <input type="text" class="form-control" name="code_sap" value="<?=$data['code_sap']?>" required>
+					</div>
+					<div class="form-group">
 					    <label>Keterangan</label>
 					    <input type="text" class="form-control" name="keterangan" value="<?=$data['keterangan']?>" required>
 					</div>
@@ -83,15 +86,7 @@
 					</div>			
 					<div class="form-group">
 					    <label>Sumber</label> 
-					    <select class="form-control" name="sumber" >
-					    <?php
-					    $query  = ("SELECT * FROM sumber ORDER BY namasumber ASC");
-					    $tampil = mysqli_query($con,$query);
-					    while ($data=mysqli_fetch_array($tampil)) {
-					    	echo "<option value=$data[idsumber]>$data[namasumber]</option>";
-					    }
-					    ?>	
-					    </select>					    	
+					    <input type="text" class="form-control" name="sumber" value="<?=$data['sumber']?>" required>
 					</div>
 					<div class="form-group">
 					    <label>Spec</label>
@@ -145,12 +140,13 @@
 					$lebar      = $_POST['lebar'];
 					$berat      = $_POST['berat']*1000;
 					$panjang    = round((($berat/($tebal*$lebar*7.85))*1000));
-					$idsumber   = $_POST['sumber'];
+					$sumber     = $_POST['sumber'];
 					$idspec     = $_POST['spec'];					
 					$idcoat     = $_POST['coat'];
 					$idorder    = $_POST['order'];
 					$berattarget= $_POST['berattarget'];
 					$finished   = $_POST['finished'];
+					$code_sap   = $_POST['code_sap'];
 					$keterangan = $_POST['keterangan'];
 					$tanggal    = $_POST['tanggal'];
 					$mpm        = ubah_speed($tebal);
@@ -163,9 +159,9 @@
 					$menit      = round(($panjang/$mpm));
 					$jam        = round(($menit/60));
 					$query      = "UPDATE  estimasicgl set tebal=".$tebal.", lebar=".$lebar.", 
-						berat=".$berat.", panjang=".$panjang.", idsumber=".$idsumber.", 
+						berat=".$berat.", panjang=".$panjang.", sumber='".$sumber."', 
 						idspec=".$idspec.", idcoat=".$idcoat.", idorder=".$idorder.", 
-						berattarget='".$berattarget."', finished='".$finished."', 
+						berattarget='".$berattarget."', finished='".$finished."', code_sap='".$code_sap."',
 						keterangan='".$keterangan."',
 						tgl_produksi='".$tanggal."', mpm=".$mpm.", 
 						menit=".$menit.", jam = ".$jam." where idcgl=".$id." ";

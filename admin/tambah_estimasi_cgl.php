@@ -51,18 +51,6 @@
 					    <input type="text" class="form-control" name="berat" required autofocus>
 					</div>					
 					<div class="form-group">
-					    <label>Spec</label> 
-					    <select class="form-control" name="sumber" >
-					    <?php
-					    $query  = ("SELECT * FROM sumber ORDER BY namasumber ASC");
-					    $tampil = mysqli_query($con,$query);
-					    while ($data=mysqli_fetch_array($tampil)) {
-					    	echo "<option value=$data[idsumber]>$data[namasumber]</option>";
-					    }
-					    ?>	
-					    </select>					    	
-					</div>
-					<div class="form-group">
 					    <label>Spec</label>
 					    <select class="form-control" name="spec" >
 					    <?php
@@ -97,7 +85,11 @@
 					    }
 					    ?>	
 					    </select>					    	
-					</div>					
+					</div>	
+					<div class="form-group">
+					    <label>Sumber</label> 
+					    <input type="text" class="form-control" name="sumber" required autofocus>    	
+					</div>				
 					<div class="form-group">
 					    <label>Berat Target</label>
 					    <input type="text" class="form-control" name="berattarget" required autofocus>
@@ -105,6 +97,10 @@
 					<div class="form-group">
 					    <label>Finished</label>
 					     <input type="text" class="form-control" name="finished" required autofocus>		    	
+					</div>
+					<div class="form-group">
+					    <label>Code OP</label>
+					    <input type="text" class="form-control" name="code_sap" required autofocus>
 					</div>
 					<div class="form-group">
 					    <label>Keterangan</label>
@@ -126,12 +122,13 @@
 					$lebar      = $_POST['lebar'];
 					$berat      = $_POST['berat']*1000;
 					$panjang    = round((($berat/($tebal*$lebar*7.85))*1000));
-					$idsumber   = $_POST['sumber'];
+					$sumber     = $_POST['sumber'];
 					$idspec     = $_POST['spec'];					
 					$idcoat     = $_POST['coat'];
 					$idorder    = $_POST['order'];
 					$berattarget= $_POST['berattarget'];
 					$finished   = $_POST['finished'];
+					$code_sap   = $_POST['code_sap'];
 					$keterangan = $_POST['keterangan'];
 					$tanggal    = $_POST['tanggal'];
 					$selesai    = 0;
@@ -144,11 +141,12 @@
 					
 					$menit      = round(($panjang/$mpm));
 					$jam        = round(($menit/60));
-					$query      = "INSERT INTO estimasicgl (tebal, lebar, berat, panjang, idsumber, idspec, idcoat, idorder, berattarget, finished, keterangan, tgl_produksi, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$idsumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$finished', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')";
+					$query      = "INSERT INTO estimasicgl (tebal, lebar, berat, panjang, sumber, idspec, idcoat, idorder, berattarget, finished, code_sap, keterangan, tgl_produksi, selesai, mpm, menit, jam) VALUES ('$tebal','$lebar','$berat','$panjang', '$sumber', '$idspec', '$idcoat', '$idorder', '$berattarget', '$finished', '$code_sap', '$keterangan', '$tanggal', '$selesai', '$mpm', '$menit', '$jam')";
 					$simpan     = mysqli_query($con,$query);
 					if ($simpan) {
 						
 						echo "<script> alert('data Berhasil Disimpan','_self')</script>";
+						echo "<script> window.open('estimasi_cgl.php','_self')</script>";
 					}else{
 					echo mysqli_error($con)."gagal<br>";
 					}

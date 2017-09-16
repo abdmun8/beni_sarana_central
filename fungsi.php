@@ -41,6 +41,9 @@ $con = mysqli_connect("localhost","root","","saranacentral");
 			case 0.7:
 				$mpm=40;
 				break;
+			case 0.75:
+				$mpm=40;
+				break;
 			case 0.8:
 				$mpm=35;
 				break;

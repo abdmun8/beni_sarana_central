@@ -39,10 +39,6 @@
 					    <input type="text" class="form-control" name="berat" required autofocus value="<?php echo $data['berat']?>">
 					</div>
 					<div class="form-group">
-					    <label>Panjang</label>
-					    <input type="text" class="form-control" name="panjang" required autofocus value="<?php echo $data['panjang']?>">
-					</div>
-					<div class="form-group">
 					    <label>Spec</label>
 					    <select class="form-control" name="spec" >
 					    <?php
@@ -76,10 +72,9 @@
 					$tebal    = $_POST['tebal'];
 					$lebar    = $_POST['lebar'];
 					$berat    = $_POST['berat'];
-					$panjang  = $_POST['panjang'];
 					$idspec   = $_POST['spec'];
 					$idsumber = $_POST['sumber'];
-					$query  = ("UPDATE bahan  SET tebal='$tebal', lebar='$lebar', berat='$berat', panjang='$panjang', idspec='$idspec', idsumber='$idsumber' where idbahan='$id'");
+					$query  = ("UPDATE bahan  SET tebal='$tebal', lebar='$lebar', berat='$berat', idspec='$idspec', idsumber='$idsumber' where idbahan='$id'");
 					$simpan = mysqli_query($con,$query);
 					if ($simpan) {
 						echo "<script>window.open('stock_coil.php','_self')</script>";

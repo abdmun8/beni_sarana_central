@@ -6,7 +6,7 @@
 	if (!isset($_SESSION['username'])) {
 		header("Location:login.php");
 		}
-		$tgl=$_GET['tgl'];
+		$code=$_GET['code'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,14 +28,14 @@
 	<hr>
 	Disini akan ditampilkan daftar order yang sudah diselesaikan<br>
 	<a href="laporan.php"><button class="btn btn-primary btn-xs">Back</button></a>
-	<a href="print.php?tgl=<?=$tgl?> "><button class="btn btn-success btn-xs">Print</button></a>
+	<a href="print.php?code=<?=$code?> "><button class="btn btn-success btn-xs">Print</button></a>
 		<table class='table-bordered' style='width: 100%'>
 				<tr style='font-weight: bold; text-align: center; Height:30px;' bgcolor='#01C388'>
 					<td>No</td>
 					<td>Tebal</td>
 					<td>Lebar</td>
 					<td>Ton</td>
-					<td>Panjang</td>
+					<td>Meter</td>
 					<td>Sumber</td>
 					<td>MPM</td>
 					<td>Menit</td>
@@ -47,13 +47,14 @@
 					<td>Finished</td>
 					<td>Tgl Produksi</td>
 					<td>Tgl Selesai</td>
+					<td>Code OP</td>
 					<td>Keterangan</td>
 				</tr>
 				<?php
 				
 				$no=0;
 				$a=1000;
-				$query     = ("SELECT idcgl,estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicgl.berattarget, finished, estimasicgl.tgl_produksi,tgl_selesai, estimasicgl.keterangan FROM estimasicgl INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber INNER JOIN spec ON estimasicgl.idspec=spec.idspec INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat INNER JOIN orders ON estimasicgl.idorder=orders.idorder  WHERE estimasicgl.selesai=1 and tgl_selesai='".$tgl."' ");
+				$query     = ("SELECT idcgl,estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, estimasicgl.sumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicgl.berattarget, finished, estimasicgl.tgl_produksi,tgl_selesai, code_sap, estimasicgl.keterangan FROM estimasicgl INNER JOIN spec ON estimasicgl.idspec=spec.idspec INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat INNER JOIN orders ON estimasicgl.idorder=orders.idorder  WHERE estimasicgl.selesai=1 and code_sap='".$code."' ");
 				$tampil     = mysqli_query($con,$query);
 				foreach ($tampil as $data) {
 					$no++;
@@ -64,7 +65,7 @@
 							<td>$data[lebar]</td>
 							<td>".$data['berat']/$a." ton</td>
 							<td>$data[panjang] m</td>
-							<td>$data[namasumber]</td>
+							<td>$data[sumber]</td>
 							<td>$data[mpm]</td>
 							<td>$data[menit]</td>
 							<td>$data[jam]</td>
@@ -75,6 +76,7 @@
 							<td>$data[finished]</td>
 							<td>$data[tgl_produksi]</td>
 							<td>$data[tgl_selesai]</td>
+							<td>$data[code_sap]</td>
 							<td>$data[keterangan]</td>
 							
 						</tr>
