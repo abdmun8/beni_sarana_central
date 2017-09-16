@@ -30,19 +30,11 @@
         <li><a href='sumber.php'>Sumber</a></li>
         <li><a href='order.php'>Order</a></li>
         <li><a href='spec.php'>Spec</a></li>
-        <!--<li><a href='finished.php'>Finished</a></li>-->
         <li><a href='coat.php'>Coat</a></li>
-        <!--<li><a href='color.php'>Color</a></li>
-        <li><a href='customer.php'>Customer</a></li>-->
         <li class='dropdown'>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Schedule<span class='caret'></span></a>
           <ul class='dropdown-menu'>
-
             <li><a href='estimasi_cgl.php'>Estimasi Produksi CGL</a></li>
-            <!--<li><a href='estimasi_csl.php'>Estimasi Produksi CSL</a></li>
-            <li><a href='estimasi_ccl.php'>Estimasi Produksi CCL</a></li>
-            <li><a href='estimasi_ccl.php'>Estimasi Produksi Shearing</a></li>-->
-
           </ul>
         </li>
         <li class='dropdown'>
@@ -50,22 +42,14 @@
           <ul class='dropdown-menu'>
             <li><a href='stock_coil.php'>Stock Coil</a></li>
             <ul>
-                <!--<li>Stock CGL</li>
-                <li>Stock CSL</li>
-                <li>Stock CCL</li>
-                <li>Stock Shearing</a></li>-->
             </ul>
             <li><a href='stock_bahan_baku.php'>Stock Bahan Baku Penunjang</a></li>
-            <!--<li>Stock</li>
-            <li>Stock</li>-->
           </ul>
         </li>
         <li class='dropdown'>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Laporan<span class='caret'></span></a>
         <ul class= 'dropdown-menu'>
         <li><a href='laporan.php'>Laporan CGL</a></li>
-        <!--<li><a href='laporan_csl.php'>Laporan CSL</a></li>
-        <li><a href='laporan_ccl.php'>Laporan CSL</a></li>-->
         </ul>
       </li>
 

@@ -34,6 +34,7 @@
 					<td>Speed</td>
 					<td colspan='2'>Waktu Prod</td>
 					<td colspan='5'>Target Produk</td>
+					<td rowspan='2'>Code OP</td>
 					<td rowspan='2'>Keterangan</td>								
 				</tr>
 				<tr style='text-align: center; Height:30px; font-weight: bold;' bgcolor='#01C388'>
@@ -53,9 +54,8 @@
 			";
 		$no=0;
 		$a=1000;
-		$query    = "SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,estimasicgl.keterangan
+		$query    = "SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, estimasicgl.sumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,estimasicgl.code_sap, estimasicgl.keterangan
 			FROM estimasicgl
-			INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
 			INNER JOIN spec ON estimasicgl.idspec=spec.idspec
 			INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat
 			INNER JOIN orders ON estimasicgl.idorder=orders.idorder
@@ -70,7 +70,7 @@
 					<td>$data[tebal] x $data[lebar] </td>
 					<td>".$data['berat']/$a." </td>
 					<td>$data[panjang] m</td>
-					<td>$data[namasumber]</td>
+					<td>$data[sumber]</td>
 					<td>$data[mpm]</td>
 					<td>$data[menit]</td>
 					<td>$data[jam]</td>
@@ -79,6 +79,7 @@
 					<td>$data[namaorder]</td>
 					<td>$data[berattarget] ton</td>
 					<td>$data[finished]</td>
+					<td>$data[code_sap]</td>
 					<td>$data[keterangan]</td>
 				</tr>
 			";

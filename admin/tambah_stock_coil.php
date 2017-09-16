@@ -32,10 +32,6 @@
 					    <input type="text" class="form-control" name="berat" required autofocus>
 					</div>
 					<div class="form-group">
-					    <label>Panjang</label>
-					    <input type="text" class="form-control" name="panjang" required autofocus>
-					</div>
-					<div class="form-group">
 					    <label>Spec</label>
 					    <select class="form-control" name="spec" >
 					    <?php
@@ -69,10 +65,9 @@
 					$tebal    = $_POST['tebal'];
 					$lebar    = $_POST['lebar'];
 					$berat    = $_POST['berat'];
-					$panjang  = $_POST['panjang'];
 					$idspec   = $_POST['spec'];
 					$idsumber = $_POST['sumber'];
-					$query  = ("INSERT INTO bahan (tebal, lebar, berat, panjang, idspec, idsumber) VALUES ('$tebal','$lebar','$berat','$panjang', '$idspec', '$idsumber')");
+					$query  = ("INSERT INTO bahan (tebal, lebar, berat, idspec, idsumber) VALUES ('$tebal','$lebar','$berat', '$idspec', '$idsumber')");
 					$simpan = mysqli_query($con,$query);
 					if ($simpan) {
 						echo "Data Berhasil disimpan";

@@ -33,22 +33,20 @@
 			<td>No</td>
 			<td>Size</td>
 			<td>Berat</td>
-			<td>Panjang</td>
 			<td>Spec</td>
 			<td>Sumber</td>
 		</tr>
 		<?php
 		$no=0;
-		$query  = ("SELECT bahan.idbahan, bahan.tebal, bahan.lebar, bahan.berat, bahan.panjang, spec.namaspec, sumber.namasumber FROM bahan INNER JOIN spec ON bahan.idspec=spec.idspec INNER JOIN sumber ON bahan.idsumber=sumber.idsumber");
+		$query  = ("SELECT bahan.idbahan, bahan.tebal, bahan.lebar, bahan.berat, spec.namaspec, sumber.namasumber FROM bahan INNER JOIN spec ON bahan.idspec=spec.idspec INNER JOIN sumber ON bahan.idsumber=sumber.idsumber");
 		$tampil = mysqli_query($con,$query);
 		while($data=mysqli_fetch_array($tampil)){
 			$no++;
 		echo "
 		<tr style='text-align:center;'>
 			<td>$no</td>
-			<td>$data[tebal] meter X $data[lebar] meter</td>
+			<td>$data[tebal] X $data[lebar] </td>
 			<td>$data[berat] ton</td>
-			<td>$data[panjang] meter</td>
 			<td>$data[namaspec]</td>
 			<td>$data[namasumber]</td>					
 		</tr>

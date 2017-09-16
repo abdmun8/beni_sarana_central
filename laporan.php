@@ -29,33 +29,30 @@
 		<table class='table-bordered' style='width: 100%'>
 				<tr style='font-weight: bold; text-align: center; Height:30px;' bgcolor='#01C388'>
 					<td>No</td>					
-					<td>Tgl Produksi</td>
-					<td>Tgl Selesai</td>
-					<td>Action</td>
+					<td>Code OP</td>
+				
+					<td>Lihat Laporan</td>
 				</tr>
 				<?php
 				$no=0;
 				$a=1000;
-				$query = ("SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, sumber.namasumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,tgl_produksi,tgl_selesai,estimasicgl.keterangan
+				$query = ("SELECT estimasicgl.idcgl, estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, estimasicgl.sumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, finished,estimasicgl.berattarget,tgl_produksi,tgl_selesai, code_sap, estimasicgl.keterangan
 					FROM estimasicgl
-					INNER JOIN sumber ON estimasicgl.idsumber=sumber.idsumber
 					INNER JOIN spec ON estimasicgl.idspec=spec.idspec
 					INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat
 					INNER JOIN orders ON estimasicgl.idorder=orders.idorder
 					WHERE selesai=1
-					group by tgl_selesai
-					ORDER BY estimasicgl.tgl_produksi ASC");
+					group by code_sap");
 				$tampil     = mysqli_query($con,$query);
 				foreach ($tampil as $data) {
 					$no++;
 					echo "
 						<tr class='text-center'>
 							<td>$no</td>
+							<td>$data[code_sap]</td>
 							
-							<td>$data[tgl_produksi]</td>
-							<td>$data[tgl_selesai]</td>
 							<td>
-								<a href='detail_laporan.php?tgl=$data[tgl_selesai]'><button class='btn btn-primary btn-xs'>Detail</button></a>";
+								<a href='detail_laporan.php?code=$data[code_sap]'><button class='btn btn-primary btn-xs'>Detail</button></a>";
 							echo "</td>
 						</tr>
 					";
