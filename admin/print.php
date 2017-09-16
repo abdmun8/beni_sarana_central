@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../fungsi.php';
+require_once 'template/header.php';
 if (!isset($_SESSION['username'])) {
 	header("Location:login.php");
 	}
@@ -26,7 +27,7 @@ $code=$_GET['code'];
 <div class="container-fluid">
 	<h1 style="padding-top: 70px; text-align: center; padding-bottom: 0;"></h1>
 		
-		<table class='table-bordered' border='1px' style='width: 100%;padding-top: 0;' >
+		<table class='table-bordered' style='width: 100%;padding-top: 0;' >
 				<tr>
 					<td style="text-align: center;padding-bottom: 6px;padding-top: 6px;" colspan="3" ><img alt="PT SCB" src="../asset/img/saranacentral3.png" height="80" width="110"></td>
 					<td colspan="9" style="padding-left: 8px;">
@@ -73,7 +74,8 @@ $code=$_GET['code'];
 					$total_menit=$data['total_menit'];
 					$total_jam=$data['total_jam'];
 				}
-				$query     = ("SELECT idcgl,estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, estimasicgl.sumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam,  spec.namaspec, coat.namacoat, orders.namaorder, estimasicgl.berattarget, finished, estimasicgl.tgl_produksi, tgl_selesai, code_sap, estimasicgl.keterangan FROM estimasicgl INNER JOIN spec ON estimasicgl.idspec=spec.idspec INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat INNER JOIN orders ON estimasicgl.idorder=orders.idorder  WHERE estimasicgl.selesai=1 and code_sap='".$code." group by idcgl' ");
+				// $query     = ("SELECT idcgl,estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, estimasicgl.sumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam,  spec.namaspec, coat.namacoat, orders.namaorder, estimasicgl.berattarget, finished, estimasicgl.tgl_produksi, tgl_selesai, code_sap, estimasicgl.keterangan FROM estimasicgl INNER JOIN spec ON estimasicgl.idspec=spec.idspec INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat INNER JOIN orders ON estimasicgl.idorder=orders.idorder  WHERE estimasicgl.selesai=1 and code_sap='".$code."' group by idcgl' ");
+				$query     = ("SELECT idcgl,estimasicgl.tebal, estimasicgl.lebar, estimasicgl.berat, estimasicgl.panjang, estimasicgl.sumber, estimasicgl.mpm, estimasicgl.menit, estimasicgl.jam, spec.namaspec, coat.namacoat, orders.namaorder, estimasicgl.berattarget, finished, estimasicgl.tgl_produksi,tgl_selesai, code_sap, estimasicgl.keterangan FROM estimasicgl INNER JOIN spec ON estimasicgl.idspec=spec.idspec INNER JOIN coat ON estimasicgl.idcoat=coat.idcoat INNER JOIN orders ON estimasicgl.idorder=orders.idorder  WHERE estimasicgl.selesai=1 and code_sap='".$code."' ");
 				$tampil     = mysqli_query($con,$query);
 				foreach ($tampil as $data) {
 					$no++;
@@ -82,7 +84,7 @@ $code=$_GET['code'];
 							<td>$no</td>
 							<td>$data[tebal]</td>
 							<td>$data[lebar]</td>
-							<td>".$data['berat']/$a." </td>
+							<td>".$data['berat']/$a." ton</td>
 							<td>$data[panjang] m</td>
 							<td>$data[sumber]</td>
 							<td>$data[mpm]</td>
