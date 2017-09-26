@@ -49,8 +49,9 @@
         <li class='dropdown'>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Laporan<span class='caret'></span></a>
         <ul class= 'dropdown-menu'>
-        <li><a href='laporan.php'>Laporan CGL</a></li>
-        </ul>
+          <li><a href='laporan.php'>Laporan CGL</a></li>        
+        </ul>        
+        <li><a href='user.php'>Management User</a></li>
       </li>
 
         ";
